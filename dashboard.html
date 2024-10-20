@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Web App</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <link rel="stylesheet" href="dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="app-name">Weather App</div>
+            <nav>
+                <ul>
+                    <li class="dash"><a href="dashboard.html">Dashboard</a></li>
+                    <li class="table"><a href="tables.html">Tables</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="search-bar">
+                <input type="text" id="citySearch" placeholder="Search for a city..." />
+                <button type="submit" class="search-btn"> Get Weather
+                    <!-- <i class="fas fa-search"></i> -->
+                </button>
+                <button class="menu-toggle">☰</button>
+            </div>
+
+            <div class="weather-section">
+                <div class="current-weather">
+                    <div class="temperature">
+
+                        <div class="temp-value"></div>
+
+                        <div class="temp-desc">
+                            <img src="https://cdn2.iconfinder.com/data/icons/weather-color-2/500/weather-01-512.png" alt="Sunny Icon" />
+                            <div class="condition"></div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="city"></div>
+                    <video autoplay loop muted class="vid"> 
+                        <source src="https://videos.pexels.com/video-files/855507/855507-hd_1920_1080_25fps.mp4">
+                    </video>
+
+                    <div class="forecast-today">
+                        <div class="hourly-item">
+                        </div>
+                        <div class="hourly-item">
+                        </div>
+                        <div class="hourly-item">
+                        </div>
+                        <div class="hourly-item">
+                        </div>
+                        <div class="hourly-item">
+                        </div>
+
+
+                    </div>
+                    <div class="air-conditions">
+                        <div class="airstats">
+                            <p>Real Feel</p>
+                            <img src="https://img.icons8.com/ios7/512w/FFFFFF/temperature.png" alt="Real feel" />
+                            <br>
+                            <span></span>
+                        </div>
+                        <div class="airstats">
+                            <p>Wind</p>
+                            <img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/700457-icon-43-wind-512.png" alt="WIND" />
+                            <br>
+                            <span></span>
+                        </div>
+                        <div class="airstats">
+                            <p>Chance of Rain</p>
+                            <img src="https://static.vecteezy.com/system/resources/previews/008/854/865/non_2x/white-cloud-rain-drops-icon-free-download-free-png.png" alt="Rain Chances" />
+                            <br>
+                            <span></span>
+                        </div>
+                        <div class="airstats">
+                            <p>UV Index</p>
+                            <img src="uv _icon.png" alt="UV index" />
+                            <br>
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weekly-forecast">
+                    <p class="Weeklypara">Weekly Forecast</p>
+                    <div class="forecast-day">
+                    </div>
+                    <div class="forecast-day">
+                    </div>
+                    <div class="forecast-day">
+                    </div>
+                    <div class="forecast-day">
+                    </div>
+                    <div class="forecast-day">
+                    </div>
+                    <div class="forecast-day">
+                    </div>
+                    <div class="forecast-day">
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts">
+                <div class="chart vertical-bar">
+                    Vertical Bar Chart
+                    <canvas id="verticalBarChart" width="450" height="250"></canvas>
+                    <!-- Increased size -->
+                </div>
+
+                <div class="chart doughnut-chart">
+                    Doughnut Chart
+                    <canvas id="doughnutChart" width="450" height="250"></canvas>
+                    <!-- Increased size -->
+                </div>
+
+                <div class="chart line-chart">
+                    Line Chart
+                    <canvas id="lineChart" width="450" height="250"></canvas>
+                    <!-- Increased size -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle'); // Ensure you have a toggle button in your HTML
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.overlay');
+            const mainContent = document.querySelector('.main-content');
+
+            if (menuToggle) { // Check if the button exists
+                menuToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                });
+            }
+
+            overlay.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            // Close menu when clicking a link
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            });
+        });
+    </script>
+    <script src="dashscript.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+</body>
+
+</html>
+
+<!-- 
+/* Responsive Design */
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .menu-toggle {
+        display: block;
+        /* Show the menu toggle button */
+        background: #3498db;
+        /* Optional: add background color */
+        color: white;
+        /* Optional: add text color */
+        border: none;
+        /* Optional: remove border */
+        padding: 10px;
+        /* Optional: add some padding */
+        cursor: pointer;
+        /* Optional: change cursor to pointer */
+        font-size: 20px;
+        /* Optional: increase font size */
+        margin-bottom: 10px;
+        /* Optional: add some margin */
+    }
+    .vid {
+        height: 70%;
+    }
+    .weekly-forecast {
+        margin-top: 15%;
+        display: flex;
+        flex-direction: column;
+        background-color: #4d6d90ba;
+        padding: 10px;
+        border-radius: 10px;
+        color: white;
+        width: 50%;
+        margin-left: 8%;
+        height: 70vh;
+    }
+    .charts {
+        align-self: center;
+        width: 110%;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+    .chart {
+        width: 40%;
+        align-items: center;
+    }
+    .vertical-bar {
+        margin-left: 5%;
+        width: 70%;
+    }
+    .doughnut-chart {
+        margin-left: 5%;
+        width: 70%;
+    }
+    .line-chart {
+        margin-left: 5%;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .container {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .menu-toggle {
+        display: block;
+        /* Show the menu toggle button */
+        background: #3498db;
+        /* Optional: add background color */
+        color: white;
+        /* Optional: add text color */
+        border: none;
+        /* Optional: remove border */
+        padding: 10px;
+        /* Optional: add some padding */
+        cursor: pointer;
+        /* Optional: change cursor to pointer */
+        font-size: 20px;
+        /* Optional: increase font size */
+        margin-bottom: 10px;
+        /* Optional: add some margin */
+    }
+    .weather-section {
+        flex-direction: column;
+    }
+    .current-weather,
+    .weekly-forecast {
+        width: 100%;
+        height: 80%;
+    }
+    .vid {
+        width: 100%;
+        height: 25vh;
+        margin: 0;
+        border-radius: 10px;
+        margin-top: -40%;
+        margin-left: -20%;
+        border-radius: 60%;
+    }
+    .air-conditions {
+        width: 100%;
+        margin: 20px 0;
+    }
+    .city {
+        font-size: 24px;
+    }
+    .charts {
+        align-self: center;
+        width: 110%;
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+    }
+    .chart {
+        width: 40%;
+        align-items: center;
+    }
+    .vertical-bar {
+        margin-left: 5%;
+        width: 40%;
+    }
+    .doughnut-chart {
+        margin-left: -5%;
+        width: 40%;
+    }
+    .line-chart {
+        margin-left: 5%;
+        width: 40%;
+        margin-top: 2%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        width: 80%;
+        margin-left: 10%;
+    }
+    .sidebar {
+        width: 20%;
+    }
+    .sidebar .app-name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    li {
+        font-size: 10px;
+        margin-left: -30%;
+    }
+    .menu-toggle {
+        display: block;
+        /* Show the menu toggle button */
+        background: #3498db;
+        /* Optional: add background color */
+        color: white;
+        /* Optional: add text color */
+        border: none;
+        /* Optional: remove border */
+        padding: 10px;
+        /* Optional: add some padding */
+        cursor: pointer;
+        /* Optional: change cursor to pointer */
+        font-size: 20px;
+        /* Optional: increase font size */
+        margin-bottom: 10px;
+        /* Optional: add some margin */
+    }
+    .container {
+        flex-direction: column;
+    }
+    .main-content {
+        width: 100%;
+        padding: 15px;
+    }
+    .search-bar {
+        margin-top: 10px;
+    }
+    .search-bar input {
+        width: 70%;
+    }
+    .temp-value {
+        font-size: 48px;
+    }
+    .city {
+        font-size: 24px;
+    }
+    .chart {
+        width: 80%;
+        margin-bottom: 20px;
+        margin-left: 10%;
+    }
+    .forecast-today {
+        overflow-x: auto;
+        padding-bottom: 10px;
+    }
+    .hourly-item {
+        min-width: 80px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .menu-toggle {
+        display: block;
+        /* Show the menu toggle button */
+        background: #3498db;
+        /* Optional: add background color */
+        color: white;
+        /* Optional: add text color */
+        border: none;
+        /* Optional: remove border */
+        padding: 10px;
+        /* Optional: add some padding */
+        cursor: pointer;
+        /* Optional: change cursor to pointer */
+        font-size: 20px;
+        /* Optional: increase font size */
+        margin-bottom: 10px;
+        /* Optional: add some margin */
+    }
+    .air-conditions {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+    .airstats {
+        width: calc(50% - 10px);
+    }
+    .temp-value {
+        font-size: 36px;
+    }
+    .temp-desc img {
+        width: 80px;
+        height: 80px;
+    }
+    .search-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .search-bar input,
+    .search-bar .search-btn {
+        width: 100%;
+        border-radius: 5px;
+    }
+    .forecast-day {
+        padding: 8px 0;
+    }
+    .forecast-day img {
+        width: 30px;
+        height: 30px;
+    }
+} -->

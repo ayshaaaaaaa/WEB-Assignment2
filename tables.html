@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Web App</title>
+    <link rel="stylesheet" href="table.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+</head>
+
+<body>
+    <div class="container">
+
+        <!-- Sidebar -->
+        <div class="sidebar">
+
+            <div class="app-name">Weather App</div>
+            <nav>
+                <ul>
+                    <li class="dash"><a href="dashboard.html">Dashboard</a></li>
+                    <li class="table"><a href="tables.html">Tables</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <div class="search-bar">
+                <input type="text" id="citySearch" placeholder="Search for a city..." />
+                <button type="submit" class="search-btn"> Get Weather </button>
+                <button class="menu-toggle">☰</button>
+            </div>
+            <div class="sub-container">
+                <div id="loadingSpinner" class="spinner" style="display: none;"></div>
+
+                <div class="Tablediv"></div>
+                <div class="Aichatbox">
+                    <h3>Ask Gemini about the weather</h3>
+                    <div class="chatbox" id="chatbox">
+                        <!-- Chat messages will appear here -->
+                    </div>
+                    <div class="chatinput">
+                        <input type="text" id="userInput" placeholder="Ask Gemini ..." />
+                        <button type="submit" id="sendButton">↑</button>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <script>
+        // Mobile menu functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle'); // Ensure you have a toggle button in your HTML
+            const sidebar = document.querySelector('.sidebar');
+            const overlay = document.querySelector('.overlay');
+            const mainContent = document.querySelector('.main-content');
+
+            if (menuToggle) { // Check if the button exists
+                menuToggle.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                    overlay.classList.toggle('active');
+                });
+            }
+
+            overlay.addEventListener('click', function() {
+                sidebar.classList.remove('active');
+                overlay.classList.remove('active');
+            });
+
+            // Close menu when clicking a link
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    sidebar.classList.remove('active');
+                    overlay.classList.remove('active');
+                });
+            });
+        });
+    </script>
+    <script src="tablescript.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+</body>
+
+</html>

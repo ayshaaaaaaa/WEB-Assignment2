@@ -1,0 +1,532 @@
+/* Global settings */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2f3a46;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 13%;
+    background-color: #1e2b38;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 100%;
+    position: sticky;
+}
+
+.sidebar .app-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin: 20px 0;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #34495e;
+    border-radius: 4px;
+}
+
+.table {
+    background-color: #34495e;
+}
+
+
+/* Main content */
+
+.main-content {
+    width: 80%;
+    padding: 20px;
+    background-color: #2f3a46;
+}
+
+
+/* Search bar */
+
+.search-bar {
+    margin-top: -3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #1e2b3800;
+    color: rgba(112, 42, 42, 0.494);
+    top: 0;
+    z-index: 1;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 14px;
+    background-color: #aaaeb37c;
+}
+
+.search-bar ::placeholder {
+    color: #ffffff;
+}
+
+.search-bar .search-btn {
+    padding: 11px;
+    background-color: #3498db91;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    margin-left: 0%;
+}
+
+.search-bar .search-btn i {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 18px;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
+
+
+/* Sub-container */
+
+.sub-container {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr;
+    width: 100%;
+    height: calc(100vh - 120px);
+}
+
+
+/* Table div */
+
+.Tablediv {
+    grid-column: 1/2;
+    border: #3498db91;
+    overflow-y: auto;
+}
+
+h3 {
+    font-size: 24px;
+    /* Set the font size */
+    font-weight: bold;
+    /* Make the text bold */
+    color: #ecf0f1;
+    /* Set the text color */
+    margin: 10px 0;
+    /* Add vertical margin */
+    text-align: left;
+    /* Align text to the left */
+    text-transform: uppercase;
+    /* Transform text to uppercase (optional) */
+    letter-spacing: 1px;
+    /* Add letter spacing */
+    line-height: 1.5;
+    /* Set line height for better readability */
+    border-bottom: 2px solid #3498db;
+    /* Optional: add a bottom border */
+    padding-bottom: 5px;
+    /* Add padding at the bottom */
+}
+
+
+/* AI chatbox */
+
+
+/* AI chatbox */
+
+.Aichatbox {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: #2f3a46;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+
+/* Spinner */
+
+.spinner {
+    border: 8px solid #f3f3f3;
+    border-top: 8px solid #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 2s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Chatbox Styling */
+
+.chatbox {
+    border: 1px solid #26435f;
+    background-color: #162331a3;
+    color: white;
+    padding: 10px;
+    height: 200px;
+    overflow-y: scroll;
+}
+
+.chatinput {
+    display: flex;
+}
+
+.chatinput input {
+    height: 4vh;
+    width: 80%;
+    padding: 10px;
+}
+
+.chatinput button {
+    height: 8vh;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    padding: 0 20px;
+    cursor: pointer;
+    margin-left: -1px;
+    margin-top: 0px;
+}
+
+
+/* Chat bubbles */
+
+.chat-message {
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
+    max-width: 80%;
+}
+
+.user-message {
+    background-color: #3498db91;
+    align-self: flex-end;
+    text-align: right;
+}
+
+.ai-message {
+    background-color: #34495e;
+    align-self: flex-start;
+    text-align: left;
+}
+
+
+/* Typing effect */
+
+.typing {
+    font-style: italic;
+    opacity: 0.7;
+}
+
+
+/* Weather table */
+
+.weather-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: #fff;
+    border-radius: 25px;
+}
+
+
+/* Table cells */
+
+.weather-table th,
+.weather-table td {
+    padding: 10px;
+    border: 1px solid #26435f;
+    text-align: center;
+}
+
+.weather-table th {
+    background-color: #182e4657;
+    color: white;
+}
+
+.weather-table tr:nth-child(even) {
+    background-color: #162331a3;
+}
+
+
+/* Pagination */
+
+.pagination {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Pagination buttons */
+
+.pagination button {
+    padding: 10px;
+    margin: 0 5px;
+    background-color: #3498db;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #34495e;
+}
+
+
+/* General button styling */
+
+button {
+    background-color: rgba(31, 64, 87, 0.56);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, border 0.3s;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: rgba(31, 64, 87, 0.56);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.disabled-btn {
+    background-color: lightgray;
+    color: black;
+    cursor: not-allowed;
+}
+
+.menu-toggle {
+    display: none;
+    /* Hide by default */
+}
+
+
+/* Responsive Design */
+
+@media screen and (max-width: 1024px) {
+    .sidebar {
+        width: 20%;
+        position: fixed;
+        left: -250px;
+        /* Hidden off-screen */
+        height: 100vh;
+        z-index: 999;
+        transition: left 0.3s;
+        /* Smooth transition */
+    }
+    .sidebar.active {
+        left: 0;
+        /* Show sidebar */
+    }
+    .main-content {
+        margin-left: 0;
+        /* Align main content */
+    }
+    .sidebar .app-name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    li {
+        font-size: 10px;
+        margin-left: -30%;
+    }
+    .container {
+        margin-left: 5%;
+    }
+    .sub-container {
+        grid-template-columns: 1fr;
+        /* Stacks content */
+    }
+    .menu-toggle {
+        display: block;
+        /* Show the menu toggle button */
+        background: #3498db;
+        /* Optional: add background color */
+        color: white;
+        /* Optional: add text color */
+        border: none;
+        /* Optional: remove border */
+        padding: 10px;
+        /* Optional: add some padding */
+        cursor: pointer;
+        /* Optional: change cursor to pointer */
+        font-size: 20px;
+        /* Optional: increase font size */
+        margin-bottom: 10px;
+        /* Optional: add some margin */
+    }
+    .chatinput button {
+        width: 10%;
+        height: 6.5vh;
+    }
+    .chatbox {
+        height: 20vh;
+    }
+    .Tablediv {
+        height: 50vh;
+        overflow-x: auto;
+    }
+    .search-bar {
+        flex-direction: row;
+        /* Stack input and button */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar {
+        width: 20%;
+    }
+    .sidebar .app-name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    li {
+        font-size: 10px;
+        margin-left: -30%;
+    }
+    .container {
+        margin-left: 5%;
+    }
+    .weather-table {
+        display: block;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+    .search-bar {
+        flex-direction: row;
+        /* Stack input and button */
+    }
+    .search-bar input {
+        width: 80%;
+        height: 3vh;
+        /* Full width */
+        max-width: none;
+        /* Override max-width */
+    }
+    .search-bar .search-btn {
+        width: 20%;
+        height: 6.5vh;
+        margin-top: 1%;
+    }
+    .chatbox {
+        display: flex;
+        flex-direction: column;
+        height: 50%
+    }
+    .chatinput {
+        flex-direction: row;
+    }
+    .chatinput input {
+        width: 80%;
+        height: 2vh;
+    }
+    .chatinput button {
+        width: 10%;
+        height: 6vh;
+    }
+    .Aichatbox {
+        height: 40vh;
+        /* Allow height to adjust */
+    }
+    .Tablediv {
+        height: 50vh;
+        overflow-x: auto;
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+    .overlay.active {
+        display: block;
+    }
+    .menu-toggle {
+        float: right;
+    }
+    .menu-toggle {
+        display: block;
+        /* Show the menu toggle button */
+        background: #3498db;
+        /* Optional: add background color */
+        color: white;
+        /* Optional: add text color */
+        border: none;
+        /* Optional: remove border */
+        padding: 10px;
+        /* Optional: add some padding */
+        cursor: pointer;
+        /* Optional: change cursor to pointer */
+        font-size: 20px;
+        /* Optional: increase font size */
+        margin-bottom: 10px;
+        /* Optional: add some margin */
+    }
+}
+
+
+/* Overlay for mobile menu */

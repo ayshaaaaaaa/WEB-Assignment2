@@ -1,0 +1,715 @@
+/* Global settings */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2f3a46;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.dash {
+    background-color: #34495e;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 13%;
+    background-color: #1e2b38;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    height: 135%;
+    position: sticky;
+}
+
+.sidebar .app-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+    position: sticky;
+}
+
+.sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    position: sticky;
+}
+
+.sidebar nav ul li {
+    margin: 20px 0;
+    position: sticky;
+}
+
+.sidebar nav ul li a {
+    text-decoration: none;
+    color: #ecf0f1;
+    font-size: 18px;
+    display: block;
+    padding: 10px;
+    position: sticky;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #34495e;
+    border-radius: 4px;
+}
+
+
+/* Main content */
+
+.main-content {
+    width: 80%;
+    padding: 20px;
+    background-color: #2f3a46;
+}
+
+.search-bar {
+    margin-top: -3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background-color: #1e2b3800;
+    color: rgba(112, 42, 42, 0.494);
+    top: 0;
+    z-index: 1;
+}
+
+.search-bar input {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px 0 0 5px;
+    font-size: 14px;
+    background-color: #aaaeb37c;
+    color: white;
+}
+
+.search-bar ::placeholder {
+    color: #ffffff;
+}
+
+.search-bar .search-btn {
+    padding: 11px;
+    background-color: #3498db91;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    color: #ffffff;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    margin-left: 0%;
+}
+
+.search-bar .search-btn i {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 18px;
+}
+
+.search-bar input:focus {
+    outline: none;
+}
+
+
+/* Weather Section */
+
+.weather-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+
+/* Current Weather */
+
+.current-weather {
+    width: 50%;
+    /* background-color: #1e2b3800; */
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+}
+
+.temperature {
+    display: flex;
+    grid-template-columns: 2;
+    grid-template-rows: 2;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.vid {
+    width: 70%;
+    max-width: 500%;
+    height: 30vh;
+    opacity: 0.4;
+    margin-left: -5%;
+    margin-top: -60%;
+    size: 100px;
+    position: relative;
+    border-radius: 40%;
+    overflow: hidden;
+}
+
+.temp-value {
+    font-size: 72px;
+    font-weight: bold;
+    z-index: 1;
+    margin-left: 10%;
+}
+
+.city {
+    margin-top: -10%;
+    font-size: 34px;
+    font-weight: bold;
+    margin-left: 10%;
+}
+
+.temp-desc {
+    text-align: center;
+    margin-left: -15px;
+    margin-top: -10px;
+}
+
+.condition {
+    margin-top: -5%;
+    z-index: 1;
+}
+
+.temp-desc img {
+    width: 120px;
+    height: 120px;
+    /* margin-left: 50%; */
+}
+
+.forecast-today {
+    margin-top: 5%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hourly-item {
+    text-align: center;
+    font-size: 14px;
+}
+
+.hourly-item img {
+    width: 40px;
+    height: 40px;
+}
+
+.air-conditions {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1e2a38;
+    padding: 15px;
+    border-radius: 10px;
+    color: #fff;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: 30%;
+    width: 110%;
+    margin-left: -4%;
+}
+
+.air-conditions div {
+    text-align: center;
+    flex: 1;
+    margin-left: -1%;
+    align-items: center;
+}
+
+.airstats {
+    align-items: center;
+    background-color: #45588c00;
+}
+
+.airstats img {
+    margin-top: 10%;
+    width: 70px;
+    height: 40px;
+    margin-bottom: 10%;
+}
+
+.air-conditions p {
+    font-size: 12px;
+    color: #a8b6c1;
+    margin-bottom: 5px;
+}
+
+.air-conditions span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.air-stat div:not(:last-child) {
+    border-right: 1px solid #19222b;
+    padding-right: 10px;
+}
+
+.air-conditions div:last-child {
+    padding-left: 15px;
+}
+
+
+/* Weekly Forecast */
+
+.weekly-forecast {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    background-color: #4d6d90ba;
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    width: 50%;
+    margin-left: 5%;
+    height: 85vh;
+}
+
+.forecast-day {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 11px 0;
+    border-bottom: 1px solid #c0c2c353;
+    margin-bottom: 7px;
+}
+
+.forecast-day:last-child {
+    border-bottom: none;
+}
+
+.forecast-day p {
+    margin: 0;
+    font-size: 14px;
+}
+
+.Weeklypara {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #a1b1c4;
+    margin-bottom: 15px;
+}
+
+.forecast-day img {
+    align-self: center;
+    width: 40px;
+    height: 40px;
+}
+
+.forecast-day .condition {
+    width: 100px;
+    /* Set width to align condition text */
+}
+
+.forecast-day .temperature {
+    font-weight: bold;
+}
+
+
+/* Charts Section */
+
+.charts {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 3%;
+}
+
+.chart {
+    width: 30%;
+    height: 150px;
+    background-color: #6997c828;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    color: white;
+    font-weight: bold;
+    margin-bottom: 2%;
+    margin-top: -2%;
+}
+
+canvas {
+    margin-top: 10px;
+    width: 200%;
+    height: 100%;
+    margin-left: 20%;
+}
+
+#doughnutChart {
+    width: 200px;
+    margin-left: 30%;
+    margin-top: -4%;
+    size: 4px;
+}
+
+.menu-toggle {
+    display: none;
+    /* Hide by default */
+}
+
+
+/* Additional improvements */
+
+.forecast-today::-webkit-scrollbar {
+    height: 4px;
+}
+
+.forecast-today::-webkit-scrollbar-track {
+    background: #1e2b38;
+    border-radius: 4px;
+}
+
+.forecast-today::-webkit-scrollbar-thumb {
+    background: #3498db;
+    border-radius: 4px;
+}
+
+.chart canvas {
+    max-width: 60%;
+    height: auto !important;
+}
+
+button {
+    background-color: rgba(31, 64, 87, 0.56);
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.3s, border 0.3s;
+    margin: 5px;
+}
+
+button:hover {
+    background-color: rgba(31, 64, 87, 0.56);
+    border: 2px solid rgba(255, 255, 255, 0.8);
+}
+
+.disabled-btn {
+    background-color: lightgray;
+    color: black;
+    cursor: not-allowed;
+}
+
+.menu-toggle {
+    display: none;
+    /* margin-top: 10%;
+    height: 8vh;
+    width: 10%;
+    align-items: center;
+    position: fixed; */
+    /* Hide by default */
+}
+
+
+/* Tablet (768px to 1023px) */
+
+@media screen and (min-width: 768px) and (max-width: 1023px) {
+    body {
+        width: 90%;
+        margin-left: 4%;
+        margin-top: -9%;
+    }
+    .sidebar {
+        width: 30%;
+        /* Width of the sidebar */
+        position: fixed;
+        left: -100%;
+        /* Off-screen initially */
+        top: 0;
+        bottom: 0;
+        transition: left 0.3s ease;
+        /* Smooth transition */
+        z-index: 999;
+    }
+    .sidebar.active {
+        left: 0;
+        /* Slide in when active */
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 20;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+    .overlay.active {
+        display: block;
+        /* Show overlay when active */
+    }
+    .menu-toggle {
+        display: flex;
+        /* Show the menu toggle button */
+        background: #3498db;
+        /* Optional: add background color */
+        color: white;
+        /* Optional: add text color */
+        border: none;
+        /* Optional: remove border */
+        padding: 10px;
+        /* Optional: add some padding */
+        cursor: pointer;
+        /* Optional: change cursor to pointer */
+        font-size: 20px;
+        /* Optional: increase font size */
+        margin-bottom: 20px;
+        /* Optional: add some margin */
+    }
+    .sidebar .app-name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    li {
+        font-size: 10px;
+        margin-left: -30%;
+    }
+    .container {
+        margin-left: 5%;
+    }
+    .weather-table {
+        display: block;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+    .vid {
+        height: 120%;
+    }
+    .temp-value {
+        font-size: 45px;
+        margin-top: 12%;
+    }
+    .temp-desc img {
+        margin-top: 10%;
+    }
+    .search-bar {
+        flex-direction: row;
+        /* Stack input and button */
+    }
+    .search-bar input {
+        width: 80%;
+        height: 3vh;
+        /* Full width */
+        max-width: none;
+        /* Override max-width */
+    }
+    .search-bar .search-btn {
+        width: 20%;
+        height: 6.5vh;
+        margin-top: 1%;
+        margin-left: -0%;
+    }
+    .menu-toggle {
+        float: right;
+    }
+    .menu-toggle {
+        display: block;
+        /* Show the menu toggle button */
+        background: #3498db;
+        /* Optional: add background color */
+        color: white;
+        /* Optional: add text color */
+        border: none;
+        /* Optional: remove border */
+        padding: 10px;
+        /* Optional: add some padding */
+        cursor: pointer;
+        /* Optional: change cursor to pointer */
+        font-size: 20px;
+        /* Optional: increase font size */
+        margin-bottom: 10px;
+        /* Optional: add some margin */
+    }
+    .main-content {
+        padding: 15px;
+        margin-top: 60px;
+    }
+    .charts {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+    .weather-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .current-weather,
+    .weekly-forecast {
+        width: 90%;
+        margin-bottom: 20px;
+    }
+    .charts {
+        display: block;
+        gap: 20px;
+        width: 100%;
+        height: 110%;
+    }
+    .chart {
+        height: 200px;
+        width: 100%;
+        margin-bottom: 5%;
+    }
+    .air-conditions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+
+/* Mobile (up to 767px) */
+
+@media screen and (max-width: 767px) {
+    body {
+        width: 90%;
+        margin-left: 4%;
+        margin-top: -9%;
+    }
+    .sidebar {
+        width: 30%;
+        /* Width of the sidebar */
+        position: fixed;
+        left: -100%;
+        /* Off-screen initially */
+        top: 0;
+        bottom: 0;
+        transition: left 0.3s ease;
+        /* Smooth transition */
+        z-index: 999;
+    }
+    .sidebar.active {
+        left: 0;
+        /* Slide in when active */
+    }
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 20;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+    }
+    .overlay.active {
+        display: block;
+        /* Show overlay when active */
+    }
+    .menu-toggle {
+        display: flex;
+        /* Show the menu toggle button */
+        background: #3498db;
+        /* Optional: add background color */
+        color: white;
+        /* Optional: add text color */
+        border: none;
+        /* Optional: remove border */
+        padding: 10px;
+        /* Optional: add some padding */
+        cursor: pointer;
+        /* Optional: change cursor to pointer */
+        font-size: 20px;
+        /* Optional: increase font size */
+        margin-bottom: 20px;
+        /* Optional: add some margin */
+    }
+    .sidebar .app-name {
+        font-size: 16px;
+        font-weight: bold;
+        margin-bottom: 40px;
+        text-align: center;
+    }
+    li {
+        font-size: 10px;
+        margin-left: -30%;
+    }
+    .container {
+        margin-left: 5%;
+    }
+    .weather-table {
+        display: block;
+        overflow-x: scroll;
+        white-space: nowrap;
+    }
+    .vid {
+        height: 120%;
+    }
+    .temp-value {
+        font-size: 45px;
+        margin-top: 12%;
+    }
+    .temp-desc img {
+        margin-top: 10%;
+    }
+    .search-bar {
+        flex-direction: row;
+        /* Stack input and button */
+    }
+    .search-bar input {
+        width: 80%;
+        height: 3vh;
+        /* Full width */
+        max-width: none;
+        /* Override max-width */
+    }
+    .search-bar .search-btn {
+        width: 20%;
+        height: 6.5vh;
+        margin-top: 1%;
+        margin-left: -0%;
+    }
+    .menu-toggle {
+        float: right;
+    }
+    .main-content {
+        padding: 15px;
+        margin-top: 60px;
+    }
+    .search-bar {
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    .weather-section {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+    .current-weather,
+    .weekly-forecast {
+        width: 100%;
+    }
+    .charts {
+        display: block;
+        gap: 20px;
+        width: 100%;
+    }
+    .chart {
+        height: 180px;
+        width: 100%;
+        margin-bottom: 5%;
+    }
+    .air-conditions {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}

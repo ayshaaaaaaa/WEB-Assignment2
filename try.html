@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1E1E2F;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1200px;
+            height: 80vh;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .sidebar {
+            width: 20%;
+            background-color: #27293D;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar h2 {
+            margin-bottom: 20px;
+            color: #ffcb05;
+        }
+        
+        .sidebar nav ul {
+            list-style-type: none;
+        }
+        
+        .sidebar nav ul li {
+            margin: 10px 0;
+        }
+        
+        .sidebar nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .main-content {
+            width: 80%;
+            background-color: #202234;
+            padding: 20px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        #searchBar {
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            width: 60%;
+            font-size: 18px;
+        }
+        
+        .user-profile {
+            font-size: 18px;
+            background-color: #ffcb05;
+            padding: 10px;
+            border-radius: 50%;
+        }
+        
+        .weather-data {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #2C2F48;
+            border-radius: 10px;
+        }
+        
+        .weather-info {
+            display: flex;
+            align-items: center;
+        }
+        
+        .weather-icon img {
+            width: 80px;
+            margin-right: 20px;
+        }
+        
+        .weather-details p {
+            margin: 5px 0;
+            font-size: 18px;
+        }
+        
+        .charts {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .chart {
+            width: 30%;
+            background-color: #2C2F48;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        canvas {
+            max-width: 100%;
+            height: 200px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        // Bar Chart
+        const ctxBar = document.getElementById('verticalBarChart').getContext('2d');
+        const barChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Temperature (°C)',
+                    data: [31, 30, 32, 28, 29, 33, 34],
+                    backgroundColor: 'rgba(255, 203, 5, 0.8)',
+                    borderColor: 'rgba(255, 203, 5, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Doughnut Chart
+        const ctxDoughnut = document.getElementById('doughnutChartCanvas').getContext('2d');
+        const doughnutChart = new Chart(ctxDoughnut, {
+            type: 'doughnut',
+            data: {
+                labels: ['Sunny', 'Cloudy', 'Rainy'],
+                datasets: [{
+                    data: [50, 30, 20],
+                    backgroundColor: [
+                        'rgba(255, 203, 5, 0.8)',
+                        'rgba(54, 162, 235, 0.8)',
+                        'rgba(75, 192, 192, 0.8)'
+                    ]
+                }]
+            }
+        });
+
+        // Line Chart
+        const ctxLine = document.getElementById('lineChartCanvas').getContext('2d');
+        const lineChart = new Chart(ctxLine, {
+            type: 'line',
+            data: {
+                labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                datasets: [{
+                    label: 'Humidity (%)',
+                    data: [40, 42, 45, 41, 38, 50, 48],
+                    fill: false,
+                    borderColor: 'rgba(255, 203, 5, 1)',
+                    tension: 0.1
+                }]
+            }
+        });
+    </script>
+    <div class="container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <h2>Weather App</h2>
+            <nav>
+                <ul>
+                    <li><a href="#">Dashboard</a></li>
+                    <li><a href="#">Tables</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Search Bar -->
+            <div class="header">
+                <input type="text" placeholder="Search City..." id="searchBar">
+                <div class="user-profile">User Profile</div>
+            </div>
+
+            <!-- Weather Data Section -->
+            <div class="weather-data">
+                <h3>Weather Data Based on City</h3>
+                <div class="weather-info">
+                    <div class="weather-icon">
+                        <img src="https://cdn2.iconfinder.com/data/icons/weather-color-2/500/weather-01-512.png" alt="Sunny">
+                    </div>
+                    <div class="weather-details">
+                        <p>City: Madrid</p>
+                        <p>Temperature: 31°C</p>
+                        <p>Condition: Sunny</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts">
+                <div class="chart" id="barChart">
+                    <h4>Vertical Bar Chart</h4>
+                    <canvas id="verticalBarChart"></canvas>
+                </div>
+                <div class="chart" id="doughnutChart">
+                    <h4>Doughnut Chart</h4>
+                    <canvas id="doughnutChartCanvas"></canvas>
+                </div>
+                <div class="chart" id="lineChart">
+                    <h4>Line Chart</h4>
+                    <canvas id="lineChartCanvas"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
